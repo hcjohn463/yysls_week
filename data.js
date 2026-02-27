@@ -13,10 +13,10 @@ const shopsData = [
         name: '戰鬥養成',
         icon: '⚔️',
         items: [
-          { name: '嘯玉',       tier: 'must',     desc: '戰鬥養成核心材料', img: '' },
-          { name: '振玉',       tier: 'must',     desc: '戰鬥養成核心材料', img: '' },
-          { name: '心法心得',   tier: 'must',     desc: '心法升級必需', img: '' },
-          { name: '短陌錢',     tier: 'must',     desc: '通用貨幣', img: '' },
+          { name: '嘯玉', tier: 'must', desc: '戰鬥養成核心材料', img: '' },
+          { name: '心法心得', tier: 'must', desc: '心法升級必需', img: '' },
+          { name: '短陌錢', tier: 'must', desc: '通用貨幣', img: '' },
+          { name: '振玉', tier: 'optional', desc: '戰鬥養成核心材料', img: '' },
           { name: '奇術突破箱', tier: 'optional', desc: '有餘額再買', img: '' },
           { name: '生活物資箱', tier: 'optional', desc: '有餘額再買', img: '' },
         ]
@@ -35,7 +35,7 @@ const shopsData = [
         icon: '✨',
         items: [
           { name: '金妙音石', tier: 'must', desc: '金裝強化必買', img: '' },
-          { name: '定音石',   tier: 'must', desc: '音色定型必買', img: '' },
+          { name: '定音石', tier: 'must', desc: '音色定型必買', img: '' },
         ]
       },
       {
@@ -51,9 +51,9 @@ const shopsData = [
         name: '賽季追趕',
         icon: '🏃',
         items: [
-          { name: '振玉溯',       tier: 'optional', desc: '有餘額再買', img: '' },
-          { name: '烏金鐵',       tier: 'optional', desc: '有餘額再買', img: '' },
-          { name: '裝備追趕箱',   tier: 'optional', desc: '有餘額再買', img: '' },
+          { name: '振玉溯', tier: 'optional', desc: '有餘額再買', img: '' },
+          { name: '烏金鐵', tier: 'optional', desc: '有餘額再買', img: '' },
+          { name: '裝備追趕箱', tier: 'optional', desc: '有餘額再買', img: '' },
           { name: '妙音石追趕箱', tier: 'optional', desc: '有餘額再買', img: '' },
           { name: '定音石追趕箱', tier: 'optional', desc: '有餘額再買', img: '' },
         ]
@@ -64,7 +64,7 @@ const shopsData = [
         icon: '👘',
         items: [
           { name: '裊裊之音', tier: 'must', desc: '外觀資源必買', img: '' },
-          { name: '俠音券',   tier: 'must', desc: '外觀兌換券必買', img: '' },
+          { name: '俠音券', tier: 'must', desc: '外觀兌換券必買', img: '' },
         ]
       },
     ]
@@ -81,7 +81,7 @@ const shopsData = [
         icon: '🪙',
         items: [
           { name: '百業驚喜禮盒', tier: 'must', desc: '必買禮盒', img: '' },
-          { name: '籌碼袋',       tier: 'must', desc: '必買貨幣包', img: '' },
+          { name: '籌碼袋', tier: 'must', desc: '必買貨幣包', img: '' },
         ]
       }
     ]
@@ -97,8 +97,8 @@ const shopsData = [
         name: '傳承商店',
         icon: '📜',
         items: [
-          { name: '心法心得',   tier: 'must',     desc: '心法升級必需', img: '' },
-          { name: '變音石',     tier: 'must',     desc: '音色變換必買', img: '' },
+          { name: '心法心得', tier: 'must', desc: '心法升級必需', img: '' },
+          { name: '變音石', tier: 'must', desc: '音色變換必買', img: '' },
           { name: '奇術突破箱', tier: 'optional', desc: '有餘額再買', img: '' },
         ]
       }
