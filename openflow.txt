@@ -1,0 +1,51 @@
+====================================================
+  燕雲十六聲每周攻略網站 - 部署流程 (openflow.txt)
+====================================================
+
+【首次部署步驟】
+
+1. 在 GitHub 建立新的 repository（例如：yysls_week）
+
+2. 在本地專案資料夾初始化 git 並推上去：
+   git init
+   git add .
+   git commit -m "init"
+   git branch -M main
+   git remote add origin https://github.com/hcjohn463/yysls_week.git
+   git push -u origin main
+
+3. 到 GitHub repository 頁面
+   -> 點上方 Settings
+   -> 左側選單選 Pages
+   -> Source 選 "GitHub Actions"
+   -> 點 "Static HTML" 那個 Configure
+   -> 頁面上方直接按 "Commit changes" 確認
+
+4. 回到 repository 頁面
+   -> 點上方 Actions 頁籤
+   -> 等待 workflow 跑完（出現綠色勾勾 ✅）
+
+5. 網站即可訪問：
+   https://hcjohn463.github.io/yysls_week/
+
+====================================================
+
+【日後更新內容步驟】
+
+每次修改完 data.js（或其他檔案）後：
+
+1. git add .
+2. git commit -m "update: 說明修改內容"
+3. git push
+
+推上去後 GitHub Actions 會自動重新部署，約 1~2 分鐘後網站更新。
+
+====================================================
+
+【專案網址】
+https://hcjohn463.github.io/yysls_week/
+
+【GitHub Repo】
+https://github.com/hcjohn463/yysls_week
+
+====================================================
