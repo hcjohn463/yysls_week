@@ -13,7 +13,7 @@
         '裊裊之音': '🎐', '俠音券': '🎟️',
         '百業驚喜禮盒': '🎁', '籌碼袋': '💰',
         '變音石': '🎴', '轉律石': '🔮', '宋元通寶': '🪙',
-        '營生手記': '📝',
+        '營生手記': '📝', '金絲宋元錢袋': '💛',
     };
 
     const DEFAULT_ICON = '🔸';
@@ -21,6 +21,7 @@
     // ── State ──
     let activeShopId = shopsData[0].id;
     let activeSubIds = {}; // shopId -> subShopId
+    let viewMode = 'grid'; // 'grid' | 'list'
 
     // Initialize default sub-tab per shop
     shopsData.forEach(s => {
@@ -77,7 +78,15 @@
                 const subPanel = document.createElement('div');
                 subPanel.id = `subpanel-${shop.id}-${sub.id}`;
                 subPanel.style.display = (sub.id === activeSubIds[shop.id]) ? 'block' : 'none';
-                subPanel.appendChild(renderItemsGrid(sub.items));
+                // Grid view
+                const gridEl = renderItemsGrid(sub.items);
+                gridEl.classList.add('view-grid-content');
+                gridEl.style.display = viewMode === 'grid' ? '' : 'none';
+                subPanel.appendChild(gridEl);
+                // List view
+                const listEl = renderItemsList(sub.items);
+                listEl.style.display = viewMode === 'list' ? '' : 'none';
+                subPanel.appendChild(listEl);
                 panel.appendChild(subPanel);
             });
 
@@ -142,6 +151,67 @@
         return grid;
     }
 
+    // ── Render items list (text mode) ──
+    function renderItemsList(items) {
+        const wrap = document.createElement('div');
+        wrap.className = 'items-list view-list-content';
+
+        if (!items || items.length === 0) {
+            const note = document.createElement('p');
+            note.className = 'empty-note';
+            note.textContent = '此商店暫無資料';
+            wrap.appendChild(note);
+            return wrap;
+        }
+
+        // Group by tier
+        const mustItems = items.filter(i => i.tier === 'must');
+        const optItems = items.filter(i => i.tier !== 'must');
+
+        function buildGroup(groupItems, tier) {
+            if (groupItems.length === 0) return;
+            const group = document.createElement('div');
+            group.className = `list-group list-group-${tier}`;
+
+            const header = document.createElement('div');
+            header.className = 'list-group-header';
+            header.innerHTML = tier === 'must'
+                ? '<span class="list-badge must-badge">必買</span>'
+                : '<span class="list-badge opt-badge">有餘額再買</span>';
+            group.appendChild(header);
+
+            groupItems.forEach(item => {
+                const row = document.createElement('div');
+                row.className = `list-row ${tier}`;
+                const icon = iconMap[item.name] || DEFAULT_ICON;
+                row.innerHTML = `
+                    <span class="list-row-icon">${icon}</span>
+                    <span class="list-row-name">${item.name}</span>
+                    <span class="list-row-desc">${item.desc}</span>
+                `;
+                group.appendChild(row);
+            });
+            wrap.appendChild(group);
+        }
+
+        buildGroup(mustItems, 'must');
+        buildGroup(optItems, 'optional');
+        return wrap;
+    }
+
+    // ── Switch view mode ──
+    function setViewMode(mode) {
+        viewMode = mode;
+        document.querySelectorAll('.view-grid-content').forEach(el => {
+            el.style.display = mode === 'grid' ? '' : 'none';
+        });
+        document.querySelectorAll('.view-list-content').forEach(el => {
+            el.style.display = mode === 'list' ? '' : 'none';
+        });
+        document.getElementById('btn-grid').classList.toggle('active', mode === 'grid');
+        document.getElementById('btn-list').classList.toggle('active', mode === 'list');
+    }
+
     // ── Select main shop ──
     function selectShop(shopId) {
         activeShopId = shopId;
@@ -172,6 +242,9 @@
     function init() {
         renderShopTabs();
         renderShopPanels();
+        // View toggle buttons
+        document.getElementById('btn-grid').addEventListener('click', () => setViewMode('grid'));
+        document.getElementById('btn-list').addEventListener('click', () => setViewMode('list'));
     }
 
     document.addEventListener('DOMContentLoaded', init);
