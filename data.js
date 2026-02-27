@@ -16,6 +16,7 @@ const shopsData = [
           { name: '嘯玉', tier: 'must', desc: '戰鬥養成核心材料', img: '' },
           { name: '心法心得 散本', tier: 'must', desc: '心法升級必需', img: '' },
           { name: '短陌錢', tier: 'must', desc: '通用貨幣', img: '' },
+          { name: '金絲宋元錢袋', tier: 'must', desc: '通用貨幣必買', img: '' },
           { name: '振玉', tier: 'optional', desc: '戰鬥養成核心材料', img: '' },
           { name: '奇術突破箱', tier: 'optional', desc: '有餘額再買', img: '' },
           { name: '生活物資箱', tier: 'optional', desc: '有餘額再買', img: '' },
