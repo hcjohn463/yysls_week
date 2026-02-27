@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>燕雲十六聲 · 每周任務攻略</title>
+  <meta name="description" content="燕雲十六聲每周必買商品清單，快速查詢各商店必買與推薦商品。" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- ===== TOP BANNER ===== -->
+  <header class="banner">
+    <h1 class="banner-title">燕雲十六聲 · 每周任務攻略</h1>
+    <p class="banner-sub">Weekly Task Guide &nbsp;·&nbsp; 商店購買清單</p>
+  </header>
+
+  <main class="container">
+
+    <!-- Legend -->
+    <div class="legend">
+      <span><span class="legend-dot legend-must"></span>必買</span>
+      <span><span class="legend-dot legend-opt"></span>有餘額再買</span>
+    </div>
+
+    <!-- Main shop tab buttons (rendered by JS) -->
+    <div id="shop-tabs" class="shop-tabs"></div>
+
+    <!-- Shop content panels (rendered by JS) -->
+    <div id="shop-panels"></div>
+
+  </main>
+
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
