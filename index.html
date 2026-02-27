@@ -1,37 +1,75 @@
 <!DOCTYPE html>
 <html lang="zh-TW">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>燕雲十六聲 · 每周任務攻略</title>
-  <meta name="description" content="燕雲十六聲每周必買商品清單，快速查詢各商店必買與推薦商品。" />
+  <meta name="description" content="燕雲十六聲每周必買商品清單與風沙酒肆攻略查詢。" />
   <link rel="stylesheet" href="styles.css" />
 </head>
+
 <body>
 
   <!-- ===== TOP BANNER ===== -->
   <header class="banner">
     <h1 class="banner-title">燕雲十六聲 · 每周任務攻略</h1>
-    <p class="banner-sub">Weekly Task Guide &nbsp;·&nbsp; 商店購買清單</p>
+    <p class="banner-sub">Weekly Task Guide &nbsp;·&nbsp; 每周攻略速查</p>
   </header>
+
+  <!-- ===== TASK-LEVEL NAV ===== -->
+  <nav class="task-nav">
+    <button class="task-nav-btn active" data-task="shop">🏪 每周必買商店</button>
+    <button class="task-nav-btn" data-task="jianmen">🍶 風沙酒肆</button>
+  </nav>
 
   <main class="container">
 
-    <!-- Legend -->
-    <div class="legend">
-      <span><span class="legend-dot legend-must"></span>必買</span>
-      <span><span class="legend-dot legend-opt"></span>有餘額再買</span>
-    </div>
+    <!-- ============================
+         任務一：商店清單
+    ============================= -->
+    <section id="task-shop" class="task-section active">
+      <!-- Legend -->
+      <div class="legend">
+        <span><span class="legend-dot legend-must"></span>必買</span>
+        <span><span class="legend-dot legend-opt"></span>有餘額再買</span>
+      </div>
+      <!-- Main shop tab buttons (rendered by JS) -->
+      <div id="shop-tabs" class="shop-tabs"></div>
+      <!-- Shop content panels (rendered by JS) -->
+      <div id="shop-panels"></div>
+    </section>
 
-    <!-- Main shop tab buttons (rendered by JS) -->
-    <div id="shop-tabs" class="shop-tabs"></div>
-
-    <!-- Shop content panels (rendered by JS) -->
-    <div id="shop-panels"></div>
+    <!-- ============================
+         任務二：風沙酒肆
+    ============================= -->
+    <section id="task-jianmen" class="task-section">
+      <div class="jm-title-block">
+        <h2 class="jm-title">🍶 風沙酒肆・來訪者鑑別</h2>
+        <p class="jm-subtitle">判斷來訪者身份，決定是否為其開門</p>
+      </div>
+      <!-- JS renders content here -->
+      <div id="jianmen-content"></div>
+    </section>
 
   </main>
 
   <script src="data.js"></script>
   <script src="app.js"></script>
+  <script src="data_jianmen.js"></script>
+  <script src="jianmen.js"></script>
+  <script>
+    // Task-level nav switching
+    document.querySelectorAll('.task-nav-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const task = btn.dataset.task;
+        document.querySelectorAll('.task-nav-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        document.querySelectorAll('.task-section').forEach(s => s.classList.remove('active'));
+        document.getElementById('task-' + task).classList.add('active');
+      });
+    });
+  </script>
 </body>
+
 </html>
