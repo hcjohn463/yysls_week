@@ -112,7 +112,7 @@
         requestAnimationFrame(() => {
             const el = document.getElementById(visitorId(name));
             if (el) {
-                el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                el.scrollIntoView({ behavior: 'auto', block: 'center' });
                 el.classList.add('card-highlight');
             }
         });
