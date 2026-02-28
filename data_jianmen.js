@@ -81,7 +81,7 @@ const jianmenQAData = [
         icon: '&#x1F94B;',
         question: '武學是什麼？',
         open: { answer: '栗（lì）子遊塵', note: '✅ 唸 lì → 開門' },
-        closed: { answer: '栗（sù）子遊塵', note: '❌ 唸 sù → 不開門' },
+        closed: { answer: '粟（sù）子遊塵', note: '❌ 唸 sù → 不開門' },
     },
     {
         visitor: '三更天',
